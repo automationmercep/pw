@@ -11,7 +11,9 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI ? 'blob' : 'html',
-
+  use: {
+    trace:"on"
+  },
   /* Configure projects for major browsers */
   projects: [
     {
