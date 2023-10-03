@@ -1,9 +1,9 @@
 name: "Playwright Tests Dietly"
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
+  #push:
+    #branches:
+     # - main
 
 jobs:
   playwright-tests:
@@ -32,7 +32,7 @@ jobs:
         retention-days: 1
 
   merge-reports:
-    # Merge reports after playwright-tests, even if some shards have failed
+    
     if: always()
     needs: [playwright-tests]
 
@@ -57,4 +57,4 @@ jobs:
       with:
         name: html-report--attempt-${{ github.run_attempt }}
         path: playwright-report
-        retention-days: 14
+        retention-days: 5
